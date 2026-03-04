@@ -1,4 +1,4 @@
-![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/Anderware/Sandbox-System-Builder/main/system.json&style=for-the-badge)![GitHub Release](https://img.shields.io/github/v/release/Anderware/Sandbox-System-Builder?style=for-the-badge&label=Latest%20release&color=%23ff6400)
+![Supported Foundry Versions](https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/Anderware/Sandbox-System-Builder/refs/heads/main/system.json&style=for-the-badge)![GitHub Release](https://img.shields.io/github/v/release/Anderware/Sandbox-System-Builder?style=for-the-badge&label=Latest%20release&color=%23ff6400)
 # Sandbox
 
 Build any system, without coding a single line in Javascript.
