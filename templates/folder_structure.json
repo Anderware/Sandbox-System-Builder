@@ -1,0 +1,248 @@
+{
+  "actors": [],
+  "items": [],
+  "folders": [
+    {
+      "name": "_TEMPLATE_ITEMS",
+      "type": "Item",
+      "_id": "Lo0mmDZQIcgYGu93",
+      "description": "",
+      "folder": null,
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236194,
+        "modifiedTime": 1773259236194,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_GROUPS",
+      "type": "Item",
+      "_id": "xGc4hNcZBXgdMaY3",
+      "description": "",
+      "folder": "Lo0mmDZQIcgYGu93",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236211,
+        "modifiedTime": 1773259236278,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_LOOKUPS",
+      "type": "Item",
+      "_id": "xXwHYu1yAk1koiUp",
+      "description": "",
+      "folder": "Lo0mmDZQIcgYGu93",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236228,
+        "modifiedTime": 1773259236279,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_PANELS",
+      "type": "Item",
+      "_id": "oH1KqRL5bOzXNJOQ",
+      "description": "",
+      "folder": "Lo0mmDZQIcgYGu93",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236232,
+        "modifiedTime": 1773259236279,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_PROPERTIES",
+      "type": "Item",
+      "_id": "NHrSSh8wlhoNGuVp",
+      "description": "",
+      "folder": "Lo0mmDZQIcgYGu93",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236237,
+        "modifiedTime": 1773259236280,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_ATTRIBUTES",
+      "type": "Item",
+      "_id": "qIXsCtWDgCYaUdKn",
+      "description": "",
+      "folder": "NHrSSh8wlhoNGuVp",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236240,
+        "modifiedTime": 1773259236280,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_SHEETTABS",
+      "type": "Item",
+      "_id": "vuNib8JD1RD1EI2s",
+      "description": "",
+      "folder": "Lo0mmDZQIcgYGu93",
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236247,
+        "modifiedTime": 1773259236280,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_CITEMS",
+      "type": "Item",
+      "_id": "QJVsZbrT0B5n2Ax6",
+      "description": "",
+      "folder": null,
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236251,
+        "modifiedTime": 1773259236251,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "_TEMPLATE_ACTORS",
+      "type": "Actor",
+      "_id": "a2LpidOOZ6mNpHMb",
+      "description": "",
+      "folder": null,
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236256,
+        "modifiedTime": 1773259236256,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "PCs",
+      "type": "Actor",
+      "_id": "PKt4r5TwuAlXxPYP",
+      "description": "",
+      "folder": null,
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236261,
+        "modifiedTime": 1773259236261,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    },
+    {
+      "name": "NPCs",
+      "type": "Actor",
+      "_id": "LRV4XNs9WFSJeSdM",
+      "description": "",
+      "folder": null,
+      "sorting": "a",
+      "sort": 0,
+      "color": null,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "sandbox",
+        "systemVersion": "0.16.0",
+        "createdTime": 1773259236266,
+        "modifiedTime": 1773259236266,
+        "lastModifiedBy": "u7CksG0mEC0QFu4N"
+      }
+    }
+  ]
+}

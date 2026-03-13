@@ -1,0 +1,415 @@
+ <form class="{{cssClass}}" autocomplete="off">
+    <header class="item-sheet-header">
+        
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" class="itemname" type="text" title="{{item.name}}" value="{{item.name}}" placeholder="Name"/>
+            {{#if showhelpers}}
+              <i id="sb-itemsheet-helper-dropdown-name-{{item.id}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>
+            {{/if}}
+            </h1>
+          <div class="allelementscenteredinaline" style="width:95%;">
+            {{#isGMOrcItemOwner item.system.ciKey}}
+              {{#usesModule "campaign-codex"}}
+                <div style="align-items: center;display: flex;">                    
+                    <input id="chkHasprice" class="check-has-price" name="system.hasPrice"  type="checkbox" {{checked item.system.hasPrice}}/>
+                    <label class="" for="chkHasprice">Has price</label>
+                 </div> 
+                {{#if item.system.hasPrice}}
+                  <div style="margin-left:auto;">
+                      <label class="" for="priceValue" >Price</label>
+                      <input id="priceValue" type="number"  class="price-input" name="system.price.value"  value="{{item.system.price.value}}"/>
+                  </div>
+                  <div style="margin-left:auto;">
+                      <label class="" for="priceDenomination" >Denomination</label>
+                      <input id="priceDenomination" type="text"  class="price-input " name="system.price.denomination"  value="{{item.system.price.denomination}}"/>
+                  </div>  
+                {{/if}}   
+              {{/usesModule}}
+            {{/isGMOrcItemOwner}}  
+            
+            
+            <label class="typelabel cItem" style="margin-left:auto;">cITEM</label>
+          </div>
+        </div>
+
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <div class="atabs">
+        <nav class="sheet-tabs tabs" data-group="primary">
+            <a class="item item-tab-button" data-tab="description">{{localize 'SANDBOX.ItemSheet.Labels.Tab.Description'}}</a>
+            <a class="item item-tab-button" data-tab="attributes" {{#isGMOrcItemOwner item.system.ciKey}} {{else}} style="display:none;" {{/isGMOrcItemOwner}} >{{localize 'SANDBOX.ItemSheet.Labels.Tab.Properties'}}   </a>
+            {{#isGM}}
+            <a class="item item-tab-button" data-tab="groups">{{localize 'SANDBOX.ItemSheet.Labels.Tab.Groups'}}</a>
+            <a class="item item-tab-button" data-tab="mods">{{localize 'SANDBOX.ItemSheet.Labels.Tab.Mods'}}</a>
+            {{/isGM}}
+        </nav>
+    </div>
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab biography citem-bio active " data-group="primary" data-tab="description">
+            
+            {{editor
+                enrichedBiography
+                target="system.description"
+                button=true
+                editable=editable
+            }}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        
+        <div class="tab attributes " data-group="primary" data-tab="attributes"  {{#isGMOrcItemOwner item.system.ciKey}} {{else}} style="display:none;" {{/isGMOrcItemOwner}}  >
+          <div class="sb-citem-mods">
+            <div class="XXXflexblock">
+               <div class="new-row attribute-table-container">
+                 <table class="attribute-table">
+                   
+                   <tbody class="attribute-table-body"></tbody>
+                 </table>
+               </div>
+             </div>   
+            </div>
+        </div>
+
+        {{!-- Groups Tab --}}
+        <div class="tab groups" data-group="primary" data-tab="groups">
+          <div class="sb-citem-mods">
+            <ol class="properties-list">
+                {{#each item.system.groups as |group id|}}
+                <li class="property flexrow" data-item-id="{{id}}">
+                    <img class="sb-item-list-icon" src="{{{sb_item_icon group.id}}}"/>
+                    <label class="property-name  sb-sub-item-label">{{group.name}}</label>
+                    <div class="property-row">
+                        <a class="property-controls item-top" title="Top Item"><i class="fas fa-arrow-alt-circle-up"></i></a>
+                        <a class="property-controls item-bottom" title="Bottom Item"><i class="fas fa-arrow-alt-circle-down"></i></a>
+                        <a class="property-controls item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="property-controls item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+          </div>
+{{!-- Item Sheet Helpers Menu Bar --}}
+    {{#if showhelpers}}
+      <div class="sb-item-helpers-menu-bar-div">
+        <li class=" sb-menu-bar">
+          <a id="sb-item-helpers-menu-bar-item-autogenerateall" title="Autogenerate All" class=" sb-menu-bar-button"><i class="fas fa-wand-magic-sparkles fa-fw"></i></a>
+          <a id="sb-item-helpers-menu-bar-item-validateall" title="Validate All" class=" sb-menu-bar-button"><i class="fas fa-spell-check fa-fw"></i></a>
+          <a id="sb-item-helpers-menu-bar-item-clearall" title="Clear All" class=" sb-menu-bar-button"><i class="fas fa-times-circle fa-fw"></i></a>
+          <a id="sb-item-helpers-menu-bar-item-show-sandbox-settings" style="float: right;" title="Sandbox Settings" class=" sb-menu-bar-button"><i class="fas fa-cog fa-fw"></i></a>
+          
+        </li>
+    </div>
+    {{/if}}
+        {{!-- Mods Tab --}}
+        <div class="tab mods  " data-group="primary" data-tab="mods">
+          
+          
+          <div class="sb-citem-mods">
+          <table class="sb-citem-mods-table">
+            <tbody class="sb-citem-mods-table">
+            <tr class="sb-citem-mods-table">
+              <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.UseType"}}}</td>
+              <td>
+                <select  name="system.usetype"  data-type="String">
+                  {{selectOptions citem.usetypes selected=item.system.usetype localize=true}}   
+                </select>                        
+              </td>
+              <td>
+                
+                {{#ifCond item.system.usetype "PAS"}}                                  
+                  {{{itemAttribute "SANDBOX.cItem.ItemAttribute.SelfDestruct"}}}
+                {{/ifCond}}
+                {{#ifCond item.system.usetype "CON"}}               
+                  {{{itemAttribute "SANDBOX.cItem.ItemAttribute.Permanent"}}}
+                {{/ifCond}}
+              </td>
+              <td>
+        
+                {{#ifCond item.system.usetype "PAS"}}                                        
+                  <input class="sb-vertical-middle check-selfdestruct" name="system.selfdestruct"  type="checkbox" {{checked item.system.selfdestruct}}/>                
+                {{/ifCond}}
+                {{#ifCond item.system.usetype "CON"}}                                 
+                  <input class="sb-vertical-middle check-ispermanent" name="system.ispermanent" id="check-ispermanent" type="checkbox" {{checked item.system.ispermanent}}/>                
+                {{/ifCond}}
+              </td>              
+            </tr>
+            
+            
+              
+            
+            
+            {{#ifCond item.system.usetype "CON"}}
+            <tr class="sb-citem-mods-table">
+              <td>
+                {{{itemAttribute "SANDBOX.cItem.ItemAttribute.RequiresTarget"}}}
+              </td>
+              <td>
+                <input class="sb-vertical-middle check-requirestarget" name="system.requiresTarget"  type="checkbox" {{checked item.system.requiresTarget}}/> 
+              </td>
+              
+              <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Icon"}}}</td>
+              <td>                                                                     
+                {{#if showiconselector}}
+                  <input type="hidden" name="system.icon" value="{{item.system.icon}}" ><div id="citem-consume-icon" class="sb-icon-displayframe"><i  class="sb-icon-displayicon fa-solid {{item.system.icon}}"></i></div>
+                {{else}}
+                  <select  name="system.icon"  data-type="String">
+                     {{selectOptions citem.icons selected=item.system.icon localize=true}} 
+                  </select> 
+                {{/if}}                
+              </td>
+              
+            </tr>
+            <tr class="sb-citem-mods-table">
+              <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.MaxUses"}}}</td>
+              <td colspan="3">    
+                <div class="sb-citem-div-input-with-helper">
+                  <input class="sb-citem-mods-input-text-with-helper" type="text" name="system.maxuses" value="{{item.system.maxuses}}"/> 
+                  {{#if showhelpers}}
+                      <i id="sb-itemsheet-helper-dropdown-maxuses-{{item.id}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>
+                  {{/if}}
+                </div>
+              </td>
+              <td></td>
+              <td>
+                
+              </td>
+            </tr>
+            <tr>
+              <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Rechargable"}}}</td>
+              <td><input class="sb-vertical-middle check-rechargable" name="system.rechargable" id="check-rechargable" type="checkbox" {{checked item.system.rechargable}}/> </td>
+              <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.RemoveAfterLastUse"}}}</td>
+              <td><input class="check-removeAfterLastUse" name="system.removeAfterLastUse" id="check-removeAfterLastUse" type="checkbox" {{checked item.system.removeAfterLastUse}}/></td>
+            </tr>  
+            {{/ifCond}}
+            
+            {{#if showctalink}}
+              <tr class="sb-citem-mods-table">
+                <th colspan="4">CTA Sandbox Module Options</th>
+              </tr>
+              <tr class="sb-citem-mods-table">
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.IsTokenIcon"}}}</td>
+                <td>
+                  <input class="check-istokenicon" name="system.istokenicon" id="check-istokenicon" type="checkbox" {{checked item.system.istokenicon}}/>
+                </td>
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.TokenVisible"}}}</td>
+                <td>
+                  <input class="check-tokenvisible" name="system.tokenvisible" id="check-tokenvisible" type="checkbox" {{checked item.system.tokenvisible}}/>
+                </td>
+              </tr>
+              <tr class="sb-citem-mods-table">
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.IconPath"}}}</td>
+                <td colspan="3">
+                  <input class="sb-citem-mods-input-text-with-helper" type="text" name="system.tokeniconpath" title="{{item.system.tokeniconpath}}" value="{{item.system.tokeniconpath}}"/>
+                  <a class="tokeniconpath" title="Browse Image"><i class="sb-itemsheet-helper-dropdown fas fa-file-upload"></i></a> 
+                </td>
+              </tr>
+            {{/if}}
+            {{#ifNot item.system.usetype "PAS"}}
+              <tr class="sb-citem-mods-table">
+                <th colspan="4">{{#ifCond item.system.usetype "ACT"}}{{{itemAttribute "SANDBOX.cItem.ItemAttribute.UseType.Activation"}}}{{/ifCond}}{{#ifCond item.system.usetype "CON"}}{{{itemAttribute "SANDBOX.cItem.ItemAttribute.UseType.Consumable"}}}{{/ifCond}} Roll</th>
+              </tr>
+              <tr class="sb-citem-mods-table">
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.RollName"}}}</td>
+                <td>
+                  <div class="sb-citem-div-input-with-helper">
+                  <input class="sb-citem-mods-input-text-with-helper" type="text" name="system.rollname" title="{{item.system.rollname}}" value="{{item.system.rollname}}"/>
+                  {{#if showhelpers}}
+                    <i id="sb-itemsheet-helper-dropdown-rollname-{{item.id}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>
+                  {{/if}}
+                  </div>
+                </td>
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.RollId"}}}</td>
+                <td>
+                  <div class="sb-citem-div-input-with-helper">
+                  <input class="sb-citem-mods-input-text-with-helper" type="text" name="system.rollid" title="{{item.system.rollid}}" value="{{item.system.rollid}}"/>
+                  {{#if showhelpers}}
+                    <i id="sb-itemsheet-helper-dropdown-rollid-{{item.id}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>
+                  {{/if}}
+                  </div>
+                </td>
+              </tr>
+              <tr class="sb-citem-mods-table">
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.HasDialog"}}}</td>
+                <td>
+                  <input class="check-hasdialog" name="system.hasdialog" id="check-hasdialog" type="checkbox" {{checked item.system.hasdialog}}/>
+                </td>
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.DialogName"}}}</td>
+                <td>
+                  <input type="text" name="system.dialogName" value="{{item.system.dialogName}}" readonly>
+                </td>
+              </tr>
+              <tr class="sb-citem-mods-table">
+                <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.RollFormula"}}}</td>
+                <td colspan="3" >
+                  <div class="sb-citem-div-input-with-helper">
+                    <input class="sb-citem-mods-input-text-with-helper" type="text" name="system.roll" title="{{item.system.roll}}" value="{{item.system.roll}}"/>
+                    {{#if showhelpers}}
+                      <i id="sb-itemsheet-helper-dropdown-rollexp-{{item.id}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>
+                    {{/if}}
+                  </div>
+                </td>
+                
+              </tr>
+            {{/ifNot}}
+            </tbody>
+          </table>  
+          
+          
+          
+          <div class="flexblock sb-citems-mods-modlist">
+            <div class="col-1-1">
+              <div class="new-row">
+                <div class="flexblock-center">
+                  <div class="modtitle centertext">{{{localize "SANDBOX.cItem.ItemAttribute.Mod.NewMod.Caption"}}}</div>
+                  <a class="mod-button mod-add" title="{{{localize "SANDBOX.cItem.ItemAttribute.Mod.NewMod.Tooltip"}}}"><i class="fas fa-plus-circle fa-2x"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>  
+        {{!-- List all mods --}}  
+        {{!-- Use new interface --}} 
+          
+            {{#each item.system.mods as |mod id|}}        
+            <table class="sb-citem-mods-list-table">              
+              <thead>
+                <tr>
+                  <th>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.ModHeader"}}}</th>
+                  <th></th>                          
+                  <th><a class="mod-delete" title="{{{localize "SANDBOX.cItem.ItemAttribute.Mod.DeleteMod.Tooltip"}}}" name="{{id}}.delete"><i class="fas fa-times-circle"></i></a></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.Name"}}}</td>
+                  <td>{{#ifNot mod.type "ROLL"}}{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.Once"}}}{{/ifNot}}</td>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.Type"}}}</td>                          
+                </tr>
+
+                <tr>                          
+                  <td><input class="mod-input" type="text" name="{{id}}.name" value="{{mod.name}}"/></td>
+                  <td>
+                    {{#ifNot mod.type "ROLL"}}
+                    <input class="check-once" index={{id}} name="{{id}}.once" id="{{id}}" type="checkbox" {{checked mod.once}}/>
+                    {{/ifNot}}</td>
+                  <td>
+                    <select  class="mod-input"  name="{{id}}.type"  data-type="String">                     
+                      {{selectOptions @root.citem.modtypes selected=mod.type localize=true}}
+                    </select>
+                  </td>
+                </tr>
+                
+                {{#ifNot mod.type "CREATE"}}
+                <tr>                          
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.CondAt"}}}</td>  
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.CondOp"}}}</td>  
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.CondValue"}}}</td>  
+                </tr>                        
+                <tr>                           
+                  <td>
+                    <div class="sb-citem-div-input-with-helper">
+                      <input class="mod-input" type="text" name="{{id}}.condat" value="{{mod.condat}}" placeholder="CONDITION EXPRESSION"/>                                            
+                      <i id="sb-itemsheet-helper-dropdown-{{id}}-condat-{{mod.citem}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>                      
+                    </div>
+                  </td> 
+                  <td>
+                    <select  class="mod-input"  name="{{id}}.condop"  data-type="String">    
+                      {{selectOptions @root.citem.modcondops selected=mod.condop localize=true}}                      
+                    </select>
+                  </td>  
+                  <td>
+                    <div class="sb-citem-div-input-with-helper">
+                      <input class="mod-input" type="text" name="{{id}}.condvalue" value="{{mod.condvalue}}" placeholder="VALUE"/>                      
+                    </div
+                  </td>  
+                </tr>
+                {{/ifNot}}
+                {{#ifCond mod.type "LIST"}}
+                <tr>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.ListMod"}}}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <select  class="mod-input"  name="{{id}}.listmod"  data-type="String">                                             
+                      {{selectOptions @root.citem.modlistmods selected=mod.listmod localize=true}}
+                    </select>
+                  </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                {{/ifCond}}
+                
+                {{#ifNot mod.type "ITEM"}}
+                {{#ifNot mod.type "ROLL"}}
+                <tr>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.Attribute"}}}</td>
+                  <td colspan="2">{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.Value"}}}</td>                          
+                </tr>
+
+                <tr>
+                  <td><input class="mod-input" type="text" name="{{id}}.attribute" value="{{mod.attribute}}" placeholder="PROPERTY KEY"/></td>
+                  <td colspan="2">
+                    <div class="sb-citem-div-input-with-helper">
+                      <input class="mod-input" type="text" name="{{id}}.value" value="{{mod.value}}" placeholder="VALUE"/>
+                      <i id="sb-itemsheet-helper-dropdown-{{id}}-value-{{mod.citem}}" class="sb-itemsheet-helper-dropdown fa-solid fa-square-caret-down"></i>                    
+                    </div>
+                    </td>
+                </tr>                        
+                {{/ifNot}}
+                {{/ifNot}}
+                {{#ifCond mod.type "ROLL"}}
+                <tr>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.RollId"}}}</td>
+                  <td colspan="2">{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.RollIdValue"}}}</td>                          
+                </tr>
+
+                <tr>
+                  <td><input class="mod-input" type="text" name="{{id}}.attribute" value="{{mod.attribute}}" placeholder="ROLL ID"/></td>
+                  <td colspan="2"><input class="mod-input" type="text" name="{{id}}.value" value="{{mod.value}}" placeholder="VALUE"/></td>                          
+                </tr>                                        
+                {{/ifCond}}
+                {{#ifCond mod.type "ITEM"}}
+                <tr>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.SelectNum"}}}</td>
+                  <td>{{{itemAttribute "SANDBOX.cItem.ItemAttribute.Mod.ItemDropArea"}}}</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;"><input class="mod-input" type="text" name="{{id}}.selectnum" value="{{mod.selectnum}}" placeholder="0 for ALL"/></td>
+                  <td colspan="2">
+                    <div class="mod-row-input mod-row-itemdrop itemdrop-area" mod="{{id}}">
+                      {{#each mod.items as |citem cid|}}
+
+                      <div class="itemdrop-area" citemId="{{citem.id}}" ciKey="{{citem.ciKey}}" cindex={{cid}} mod="{{id}}">
+                        <a class="modcitem-edit mod-citem" >{{citem.name}}</a>
+                        <a class="modcitem-delete mod-citem" ><i class="fas fa-times-circle"></i></a>
+                      </div>
+
+                      {{/each}}
+                    </div>
+                  </td>
+                </tr>
+                {{/ifCond}}
+              <tfoot class="sb-citem-mod-table-last-empty-row">
+                <tr class="sb-citem-mod-table-last-empty-row">
+                  <td colspan="3" class="sb-citem-mod-table-last-empty-row">&nbsp;</td>    
+                </tr>
+              </tfoot>
+              </tbody>
+              
+            </table>
+            {{/each}}  
+            
+ 
+          </div>
+        </div>
+
+    </section>
+</form>
+
+
