@@ -1,13 +1,13 @@
 # Sandbox Change Log
-                 
+
 ## Version 0.16.0.0(2026-xx-xx)
 - Changes for Foundry v13 compability
-  - Too many to list, both backend things and CSS to work with the v13 new UI! 
+  - Too many to list, both backend things and CSS to work with the v13 new UI
 - added actor type 'npc', useful for modules(like Campaign Codex) that need it. Handle these as any other actor
 - FIX: Conditional with only one number pair was not handled correctly
 - Added option 'Requires Target' for Consumable cItem, if checked, the cItem can not be consumed if no token is targeted
-- Added Roll Expression flag ~requirestarget~, when used, the roll will only be executed if the user has targeted at least one token
-- Added attribute Label Alignment for properties that have a Label, defaults to Left. Note: Also used in Table headers
+- Added Roll Expression flag `~requirestarget~`, when used, the roll will only be executed if the user has targeted at least one token
+- Added attribute Label Alignment for properties that have a Label, defaults to Left. 
 - Added attribute Input Alignment for SIMPLETEXT,SIMPLENUMERIC,LIST properties, defaults to Center
 
 ## Version 0.15.0.0(2026-02-20)
