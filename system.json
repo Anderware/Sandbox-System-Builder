@@ -49,8 +49,9 @@
   },
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
-  "url":       "https://gitlab.com/rolnl/sandbox-system-builder/",
-  "manifest":  "https://gitlab.com/rolnl/sandbox-system-builder/-/raw/master/system.json",
-  "download":  "https://gitlab.com/rolnl/sandbox-system-builder/-/archive/v0.16.0.0/sandbox-system-builder-v0.16.0.0.zip",
-  "changelog": "https://gitlab.com/rolnl/sandbox-system-builder/-/raw/v0.16.0.0/changelog.md"
+  "url":       "https://github.com/Anderware/Sandbox-System-Builder/",
+  "manifest":  "https://raw.githubusercontent.com/Anderware/Sandbox-System-Builder/refs/heads/main/system.json",
+  "download":  "https://github.com/Anderware/Sandbox-System-Builder/releases/download/v0.16.0/sandbox-system-builder.zip",
+  "readme": "https://github.com/Anderware/Sandbox-System-Builder/blob/main/readme.md",
+  "changelog": "https://github.com/Anderware/Sandbox-System-Builder/blob/main/changelog.md"
 }
