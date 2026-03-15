@@ -1,5 +1,9 @@
 # Sandbox Change Log
 
+## Version 0.16.0.1(2026-03-xx)
+- FIX: Rollmodes(blind/gm/self) for rolls from actor sheet were not respected
+- FIX: Sandbox system menu on Settings tab were displayed for all players
+
 ## Version 0.16.0.0(2026-03-13)
 - Changes for Foundry v13 compability
   - Too many to list, both backend things and CSS to work with the v13 new UI

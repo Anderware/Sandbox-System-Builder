@@ -449,6 +449,8 @@ Hooks.once('ready', async () => {
 
 Hooks.on("renderAbstractSidebarTab", (app, html, context, options) => {
   if (app.tabName == "settings") {
+    if (!game.user.isGM)
+        return;
     console.log('Sandbox | Adding Sandbox menu to settings sidebar');
     //console.log(html);
     let infoSection = document.querySelector('#settings > section.info.flexcol');

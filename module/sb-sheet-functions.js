@@ -977,7 +977,7 @@ async function sb_sheet_showplayers_info_chat(showid,showtype,what_show,who_show
       isWhisper:iswhisper,
       whisperTo:whisperrecipients
     };
-  renderTemplate("systems/sandbox/templates/sb-info-chat-msg-all.hbs", msgData).then(html => {
+  foundry.applications.handlebars.renderTemplate("systems/sandbox/templates/sb-info-chat-msg-all.hbs", msgData).then(html => {
       ChatMessage.create({
           speaker: ChatMessage.getSpeaker(),  // R800 2023-05-21
           content: html,

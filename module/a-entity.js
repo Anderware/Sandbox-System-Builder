@@ -3161,55 +3161,15 @@ export class gActor extends Actor {
     }
 
     async getRollModeFromUI() {
-        let rtypevalue = '';
-        // check for module DF Chat Enchancements
-        let isDFChatEnhanceUsed = false;
-        if (game.modules.get("df-chat-enhance") != null) {
-            if (game.modules.get("df-chat-enhance").active) {
-                isDFChatEnhanceUsed = true;
-                // try to get the roll mode from the df ui
-                let btnrollmode;
-                btnrollmode = document.querySelector('#dfcp-rt-buttons > button[data-id="publicroll"]');
-                if (btnrollmode != null) {
-                    if (btnrollmode.classList.contains('active')) {
-                        rtypevalue = CONST.DICE_ROLL_MODES.PUBLIC;
-                    }
-                }
-                btnrollmode = document.querySelector('#dfcp-rt-buttons > button[data-id="gmroll"]');
-                if (btnrollmode != null) {
-                    if (btnrollmode.classList.contains('active')) {
-                        rtypevalue = CONST.DICE_ROLL_MODES.PRIVATE;
-                    }
-                }
-                btnrollmode = document.querySelector('#dfcp-rt-buttons > button[data-id="blindroll"]');
-                if (btnrollmode != null) {
-                    if (btnrollmode.classList.contains('active')) {
-                        rtypevalue = CONST.DICE_ROLL_MODES.BLIND;
-                    }
-                }
-                btnrollmode = document.querySelector('#dfcp-rt-buttons > button[data-id="selfroll"]');
-                if (btnrollmode != null) {
-                    if (btnrollmode.classList.contains('active')) {
-                        rtypevalue = CONST.DICE_ROLL_MODES.SELF;
-                    }
-                }
-            }
-        }
-        if (!isDFChatEnhanceUsed || rtypevalue == '') {
-            // try to find the roll mode from standard UI
-            let rolltype = document.getElementsByClassName("roll-type-select");
-            if (rolltype != null) {
-                if (rolltype.length > 0) {
-                    rtypevalue = rolltype[0].value;
-                }
-            }
-        }
-        if (rtypevalue == '') {
+        
+        let currentRollMode = game.settings.get("core", "rollMode");
+
+        if (currentRollMode == '') {
             // still no roll mode found
-            // set default to public roll in case modded UI does not have the default select
-            rtypevalue = CONST.DICE_ROLL_MODES.PUBLIC;
+            // set default to public roll
+            currentRollMode = CONST.DICE_ROLL_MODES.PUBLIC;
         }
-        return rtypevalue;
+        return currentRollMode;
     }
 
     async showDice3DAnimation(roll, blindmode, gmmode, selfmode, rollModeFromUI) {

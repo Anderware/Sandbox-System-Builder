@@ -155,7 +155,7 @@ export class SandboxInfoForm extends FormApplication {
     };
     let secrets = false;
     if (game.user.isGM) secrets = true;
-    data.enrichedBiography = await TextEditor.enrichHTML(data.data.data.description, {secrets:secrets,documents:true,links:true, entities:true,async: true});
+    data.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(data.data.data.description, {secrets:secrets,documents:true,links:true, entities:true,async: true});
     return data;
   }
 
