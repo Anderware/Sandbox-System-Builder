@@ -1,6 +1,6 @@
 # Sandbox Change Log
 
-## Version 0.16.0.1(2026-03-xx)
+## Version 0.16.0.1(2026-03-15)
 - FIX: Rollmodes(blind/gm/self) for rolls from actor sheet were not respected
 - FIX: Sandbox system menu on Settings tab were displayed for all players
 
