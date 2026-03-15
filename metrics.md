@@ -7,7 +7,7 @@
 
 ### By release
 ![GitHub Downloads (specific asset, specific tag)](https://img.shields.io/github/downloads/Anderware/Sandbox-System-Builder/v0.16.0/sandbox-system-builder.zip?style=for-the-badge&color=%23ff6400)  
-
+![GitHub Downloads (specific asset, specific tag)](https://img.shields.io/github/downloads/Anderware/Sandbox-System-Builder/v0.16.1/sandbox-system-builder.zip?style=for-the-badge&color=%23ff6400)  
 
 ### Total
 
