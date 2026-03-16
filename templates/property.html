@@ -365,6 +365,14 @@
               </select>
             </div>
           </div>
+          <div class="new-row">
+            <div class="flexblock-left">
+              <label class="label-medlarge">Input Alignment</label>
+              <select  name="system.inputAlignment"  data-type="String">
+                {{selectOptions property.textalignments selected=item.system.inputAlignment localize=true}}
+              </select>
+            </div>
+          </div>
           {{/ifCond}}
 
           {{#ifCond item.system.datatype "list"}}

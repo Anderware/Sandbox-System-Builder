@@ -8,6 +8,8 @@ Badge is a special variant of a number property, it stores only whole numbers(in
 
 The maximum value that the property can have. This field accepts [Expressions](sandbox_expressions.md)
 
+If this attribute is not set(empty field), then there is no upper limit
+
 ### Auto
 
 A valid Common Expression, see [Expressions](sandbox_expressions.md)

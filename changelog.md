@@ -1,5 +1,9 @@
 # Sandbox Change Log
 
+## Version 0.16.0.2(2026-03-xx)
+- FIX: Input Alignment for TEXTAREA properties were missing
+- Added support for BADGE properties to not have a max value set
+
 ## Version 0.16.0.1(2026-03-15)
 - FIX: Rollmodes(blind/gm/self) for rolls from actor sheet were not respected
 - FIX: Sandbox system menu on Settings tab were displayed for all players

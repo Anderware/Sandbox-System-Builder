@@ -203,8 +203,10 @@ export class gActorSheet extends foundry.appv1.sheets.ActorSheet {
             if (newvalue < 0)
                 newvalue = 0;
 
-            if (newvalue > attributes[attKey].max) {
-                newvalue = attributes[attKey].max;
+            if (attributes[attKey].max != null ){
+              if (newvalue > attributes[attKey].max) {
+                  newvalue = attributes[attKey].max;
+              }
             }
 
             let stringvalue = "";
@@ -224,11 +226,16 @@ export class gActorSheet extends foundry.appv1.sheets.ActorSheet {
             const attributes = this.actor.system.attributes;
 
             let attKey = $(ev.currentTarget).attr("attKey");
+            let currentValue=0;
+            if (attributes[attKey].value != null ){
+              currentValue = await parseInt(attributes[attKey].value);
+            }
+            let newvalue = currentValue  + 1;
 
-            let newvalue = await parseInt(attributes[attKey].value) + 1;
-
-            if (newvalue > attributes[attKey].max) {
-                newvalue = attributes[attKey].max;
+            if (attributes[attKey].max != null ){
+              if (newvalue > attributes[attKey].max) {
+                  newvalue = attributes[attKey].max;
+              }
             }
 
             let stringvalue = "";

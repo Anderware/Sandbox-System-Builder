@@ -60,6 +60,9 @@ If enabled, a label are displayed next to the input on the sheet, else only the 
 
 The width of the label for this property.
 
+### Label Alignment
+The alignment of the text of the label
+
 ### Label Format
 
 The format of the displayed label.
@@ -91,6 +94,9 @@ What CSS class will be added to the input element. See [CSS and styling](css_and
 ### Input Size
 
 The width of the input.
+
+### Input Alignment
+The alignment of the text in the input
 
 ### Tooltip
 
