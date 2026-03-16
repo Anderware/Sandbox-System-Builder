@@ -936,19 +936,49 @@ Hooks.on("preUpdateItem", async (item, updateData, options, userId) => {
     const OPTION_AUTOGENERATE_PROPERTY_ICON = sb_item_sheet_get_game_setting("sandbox", SETTINGATTRIBUTE.OPTION_AUTOGENERATE_PROPERTY_ICON.ID);
     if(item.type=="property" && OPTION_AUTOGENERATE_PROPERTY_ICON){
       if(updateData.hasOwnProperty('system')){
+        //console.log("Sandbox | Updating icon")
         let iconbasefilename="systems/sandbox/styles/icons/propertytypes/sb_property_";
         let iconfile;
         if(updateData.system.hasOwnProperty('datatype')){
-          // property and datatype change                              
-          if((updateData.system.datatype=="badge" || updateData.system.datatype=="label" || updateData.system.datatype=="checkbox" || updateData.system.datatype=="list" || updateData.system.datatype=="radio" || updateData.system.datatype=="simplenumeric" || updateData.system.datatype=="simpletext" || updateData.system.datatype=="textarea") && item.system.hasroll){
-            //iconfile=iconbasefilename + 'die.svg'; 
-            iconfile=iconbasefilename + updateData.system.datatype + '_rollable.svg'; 
-          } else {
-            iconfile=iconbasefilename + updateData.system.datatype + '.svg'; 
-          }                               
-          updateData.img=iconfile;
+          // property and datatype change                
+          switch(updateData.system.datatype){
+            case "badge":
+            case "label" :
+            case "checkbox":
+            case "list":
+            case "radio":
+            case "simplenumeric":
+            case "simpletext":
+            case "textarea":
+              // all the above gets this treatment
+              if(updateData.system.hasOwnProperty('hasroll')){
+                if(updateData.system.hasroll){
+                  iconfile=iconbasefilename + updateData.system.datatype + '_rollable.svg';
+                } else {
+                  iconfile=iconbasefilename + updateData.system.datatype + '.svg';
+                }
+                  
+              } else {
+                // has roll have not changed
+                if(item.system.hasroll){
+                  iconfile=iconbasefilename + updateData.system.datatype + '_rollable.svg';
+                } else{
+                  iconfile=iconbasefilename + updateData.system.datatype + '.svg';
+                }
+                
+              }
+              updateData.img=iconfile;
+              break;            
+            default:
+              iconfile=iconbasefilename + updateData.system.datatype + '.svg';
+              updateData.img=iconfile;
+              break;
+          }
+          
+
         } else if(updateData.system.hasOwnProperty('hasroll')){
-          if((item.system.datatype=="badge" || item.system.datatype=="label" || item.system.datatype=="checkbox" || item.system.datatype=="list" || item.system.datatype=="radio" || item.system.datatype=="simplenumeric" || item.system.datatype=="simpletext" || item.system.datatype=="textarea") && updateData.system.hasroll){
+          if((item.system.datatype=="badge" || item.system.datatype=="label" || item.system.datatype=="checkbox" || item.system.datatype=="list" ||
+                  item.system.datatype=="radio" || item.system.datatype=="simplenumeric" || item.system.datatype=="simpletext" || item.system.datatype=="textarea") && updateData.system.hasroll){
             //iconfile=iconbasefilename + 'die.svg'; 
             iconfile=iconbasefilename + item.system.datatype + '_rollable.svg';
           } else {

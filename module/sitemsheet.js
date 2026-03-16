@@ -459,7 +459,7 @@ export class sItemSheet extends foundry.appv1.sheets.ItemSheet {
 
         html.find('.imgsrc-filepicker').click(ev => {
 
-            new FilePicker({
+            new foundry.applications.apps.FilePicker.implementation({
                 type: "image",
                 displayMode: "tiles",
                 current: this.item.system.imgsrc,
@@ -469,7 +469,7 @@ export class sItemSheet extends foundry.appv1.sheets.ItemSheet {
         
         html.find('.checkonPath').click(ev => {
 
-            new FilePicker({
+            new foundry.applications.apps.FilePicker.implementation({
                 type: "image",
                 displayMode: "tiles",
                 current: this.item.system.onPath,
@@ -482,7 +482,7 @@ export class sItemSheet extends foundry.appv1.sheets.ItemSheet {
 
         html.find('.checkoffPath').click(ev => {
 
-            new FilePicker({
+            new foundry.applications.apps.FilePicker.implementation({
                 type: "image",
                 displayMode: "tiles",
                 current: this.item.system.offPath,
@@ -492,7 +492,7 @@ export class sItemSheet extends foundry.appv1.sheets.ItemSheet {
 
         html.find('.tokeniconpath').click(ev => {
 
-            new FilePicker({
+            new foundry.applications.apps.FilePicker.implementation({
                 type: "image",
                 displayMode: "tiles",
                 current: this.item.system.tokeniconpath,

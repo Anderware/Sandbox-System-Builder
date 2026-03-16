@@ -2,6 +2,7 @@
 
 ## Version 0.16.0.2(2026-03-xx)
 - FIX: Input Alignment for TEXTAREA properties were missing
+- FIX: Autogeneration of property icon
 - Added support for BADGE properties to not have a max value set
 
 ## Version 0.16.0.1(2026-03-15)
