@@ -51,7 +51,7 @@
   "secondaryTokenAttribute": "power",
   "url":       "https://github.com/Anderware/Sandbox-System-Builder/",
   "manifest":  "https://raw.githubusercontent.com/Anderware/Sandbox-System-Builder/refs/heads/main/system.json",
-  "download":  "https://github.com/Anderware/Sandbox-System-Builder/releases/download/v0.16.2/sandbox-system-builder.zip",
+  "download":  "https://github.com/Anderware/Sandbox-System-Builder/releases/download/v0.16.1/sandbox-system-builder.zip",
   "readme": "https://github.com/Anderware/Sandbox-System-Builder/blob/main/readme.md",
   "changelog": "https://github.com/Anderware/Sandbox-System-Builder/blob/main/changelog.md"
 }
