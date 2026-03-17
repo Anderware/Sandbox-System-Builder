@@ -1457,7 +1457,7 @@ Hooks.on("renderChatMessage", async (app, html, data) => {
         if (_html.includes("table-draw")) {
             let mytableID = data.message.flags.core.RollTable;
             let mytable = game.tables.get(mytableID);
-            let tableresult = mytable.getResultsForRoll(app.rolls[0].total)[0].text;
+            let tableresult = mytable.getResultsForRoll(app.rolls[0].total)[0].description ;
             html.find('.dice-roll');
             if (mytable.permission.default == 0)
                 hide = true;

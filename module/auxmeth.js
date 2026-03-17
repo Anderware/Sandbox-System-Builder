@@ -1858,14 +1858,21 @@ if(!useMathParser){
                         //console.log(limits);
                         let value = limits[0];
                         if (isNaN(value) && !value.includes("$") && !value.includes("min") && !value.includes("max")) {
-                            let roll = new Roll(limits[0]);
+                            
                             try{
+                              let roll = new Roll(limits[0]);
+                            
                               await roll.evaluate();
                               value = roll.total;
                             } catch(err){
+                              if (game.system.debugOperation!=null){
+                                console.error(game.system.debugOperation);
+                              }
                               console.error('autoparser scale | ' + err.message);
                               console.error('autoparser scale | initial expression\n',initialexp);
                               console.error('autoparser scale | failed expression\n',expr);
+                              console.error('autoparser scale | failed evaluation\n',limits[0]);
+                              ui.notifications.warn('Error in autoParser, check console(F12) for details')
                             }
                             
                         }
@@ -2497,6 +2504,7 @@ if(!useMathParser){
     }
     
     static  GetConditionalText(valueToCompare, mappingString) {
+      //console.log('GetConditionalText',valueToCompare,mappingString);
       let result='';
       try{
         if (typeof mappingString !== "string" || !mappingString.trim()) return undefined;
@@ -2531,7 +2539,7 @@ if(!useMathParser){
           console.error(`Error in ConditionalText: valueToCompare:[${valueToCompare}] mappingString:[${mappingString}`);
           console.error(err.message);
       }
-
+      
       return result;
     }
     

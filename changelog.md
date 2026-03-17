@@ -1,9 +1,12 @@
 # Sandbox Change Log
 
-## Version 0.16.0.2(2026-03-xx)
+## Version 0.16.0.2(2026-03-18)
 - FIX: Input Alignment for TEXTAREA properties were missing
 - FIX: Autogeneration of property icon
 - Added support for BADGE properties to not have a max value set
+- Added some error handling for autoParser
+- NOTE: If using some mathematical expression in a conditional text, surround it with sum(...) and otherwise it will not be calulated. 
+  Example: 0 &&0;0:Calculate this (1+2) &&    ->   0 &&0;0:Calculate this sum(1+2) &&
 
 ## Version 0.16.0.1(2026-03-15)
 - FIX: Rollmodes(blind/gm/self) for rolls from actor sheet were not respected

@@ -2689,7 +2689,7 @@ export class gActor extends Actor {
     }
 
     async setAutoProp(attID, attributes, attribute, findme, ithaschanged, secondround = false) {
-        //console.log(attribute);
+        //console.log("setAutoProp:" + attribute);
         //console.log(findme);
         if ((attribute != null || attribute != undefined) && findme.length > 0) {
             let attdata = attributes[attribute];
@@ -2774,7 +2774,9 @@ export class gActor extends Actor {
                     rawexp = await this.expandPropsP(rawexp, attributes, property.system.datatype);
 
                     if (!actorAtt.isset) {
+                        game.system.debugOperation=`setAutoProp: Property[${attribute}]`;
                         newvalue = await auxMeth.autoParser(rawexp, attributes, null, exprmode);
+                        game.system.debugOperation=null;
                         //console.log(attribute + " " + newvalue);
                         if (actorAtt.value != newvalue)
                             ithaschanged = true;
