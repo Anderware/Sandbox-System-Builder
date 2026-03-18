@@ -10,6 +10,10 @@ The toolbar is only showed for GMs.
 
 Re-builds all actor templates. This is the equivalence of clicking Rebuild Sheet on every actor template.
 
+### Reload Actor s
+
+Reloads all actors. This is the equivalence of clicking Reload on every actor.
+
 ### Check Consistency
 
 Checks and makes sure that all items are consistent. 
