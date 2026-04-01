@@ -493,6 +493,7 @@ async function replaceAllMissingImages(){
     return false;  
   }
   console.log("Sandbox | replaceAllMissingImages started");
+  ui.notifications.info(`Replacing ALL missing images, please wait for completion...`);
   // set global flag to stop indexing
   await game.user.setFlag('world','updateItemMapsDisabled',true);
   await replaceAllMissingItemImages();
@@ -503,6 +504,7 @@ async function replaceAllMissingImages(){
   // update custom item maps
   await auxMeth.updateItemMaps();
   console.log("Sandbox | replaceAllMissingImages completed");
+  ui.notifications.info(`Replacing ALL missing images completed.`);
 }
 
 async function replaceAllMissingItemImages(){
@@ -523,6 +525,7 @@ async function replaceAllMissingItemImages(){
 }
 
 async function replaceMissingItemImages(itemtype) {
+  ui.notifications.info(`Replacing missing images for items of type ${itemtype}, please wait for completion...`);
   let rollable = false;
   let api = game.system.api;
   let fileexists;
@@ -544,9 +547,11 @@ async function replaceMissingItemImages(itemtype) {
       await items[i].update({[`img`]: iconfile});
     }
   }
+  ui.notifications.info(`Replacing missing images for items of type ${itemtype} completed`);
 }
 
 async function replaceMissingActorImages(){
+ ui.notifications.info(`Replacing missing images for actors, please wait for completion...`);
 let api=game.system.api;
 let fileexists;
 let actors = await game.actors;
@@ -558,9 +563,11 @@ for (let actor of actors) {
      await actor.update({[`img`]: iconfile});
    }
   }
+ui.notifications.info(`Replacing missing images for actors completed`);
 }
 
 async function replaceMissingTokenImages() {
+  ui.notifications.info(`Replacing missing images for tokens, please wait for completion...`);
   let api = game.system.api;
   let fileexists;
   let scenes = game.scenes;
@@ -575,6 +582,7 @@ async function replaceMissingTokenImages() {
       }
     }
   }
+  ui.notifications.info(`Replacing missing images for tokens completed`);
 }
 
 

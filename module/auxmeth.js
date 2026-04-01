@@ -2155,8 +2155,13 @@ if(!useMathParser){
 
                             //console.log(thiscondition + " " + checker);
                             try{
-                              if (thiscondition.toString() === checker.toString()) {
-                                finalvalue = truevalue;
+                              if (thiscondition!=null){
+                                if (thiscondition.toString() === checker.toString()) {
+                                  finalvalue = truevalue;
+                                }
+                              } else{
+                                finalvalue=0;
+                                console.error('autoparser IF | Condition missing!', initialexp,expr);
                               }
                             }
                             catch(err){
@@ -2232,10 +2237,9 @@ if(!useMathParser){
                 //console.log("exprmode=false")
                 try {
                     let final = new Roll(expr);
-                    //await final.evaluate({ async: true });
-                    await final.evaluateSync();
-                    //final.roll();
-                    //console.log(final);
+                    
+                    await final.evaluate();
+                   
 
                     if (isNaN(final.total) || final.total == null || final.total === false) {
                         toreturn = expr;
@@ -2250,6 +2254,7 @@ if(!useMathParser){
                     //console.log("Following Roll expression can not parse to number. String returned");
                     //console.log(expr);
                     //ui.notifications.warn("Roll expression can not parse to number");
+                    console.warn("SANDBOX | autoparser error for expr:["+ expr + "], initial expr:["+ initialexp +"]",err);
                     toreturn = expr;
                 }
 

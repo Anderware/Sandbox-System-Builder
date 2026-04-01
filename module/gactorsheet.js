@@ -1203,7 +1203,7 @@ export class gActorSheet extends foundry.appv1.sheets.ActorSheet {
     async setAttributeValues(attID, attData, propName) {
 
         //reference to attribute
-        //console.log(attID + " " + propName);
+        //console.log("SANDBOX | attID:[" + attID + "] propName:[" + propName + "]",attData);
         //const attData = this.actor.data.data.attributes;
         //const property = await game.items.get(attID);
         const property = await auxMeth.getTElement(attID, "property", propName);
@@ -3926,7 +3926,7 @@ export class gActorSheet extends foundry.appv1.sheets.ActorSheet {
                                       new_cell.classList.add(sCellAlignment);
                                     }
                                     new_cell.classList.add(propKey);
-                                    if(inputgroup.length>0 )  new_cell.classList.add(inputgroup);
+                                    if(inputgroup.length>0 )  new_cell.className += inputgroup;   //input group may contains several classes( separated by spaces) thhat is  why add cant be used here
                                     if(!isFirstColumnSet){
                                       new_cell.classList.add("sb-table-row-first-column");
                                       isFirstColumnSet=true;

@@ -1,6 +1,10 @@
 # Sandbox Change Log
 
-## Version 0.16.0.2(2026-03-18)
+## Version 0.16.3(2026-04-01)
+- FIX: Roll expression used in Default/Max for property was not evaluated correctly
+- FIX: Actor template failed to be set properly when using complex expressions
+
+## Version 0.16.2(2026-03-18)
 - FIX: Input Alignment for TEXTAREA properties were missing
 - FIX: Autogeneration of property icon
 - Added support for BADGE properties to not have a max value set
@@ -8,11 +12,11 @@
 - NOTE: If using some mathematical expression in a conditional text, surround it with sum(...) and otherwise it will not be calulated. 
   Example: 0 &&0;0:Calculate this (1+2) &&    ->   0 &&0;0:Calculate this sum(1+2) &&
 
-## Version 0.16.0.1(2026-03-15)
+## Version 0.16.1(2026-03-15)
 - FIX: Rollmodes(blind/gm/self) for rolls from actor sheet were not respected
 - FIX: Sandbox system menu on Settings tab were displayed for all players
 
-## Version 0.16.0.0(2026-03-13)
+## Version 0.16.0(2026-03-13)
 - Changes for Foundry v13 compability
   - Too many to list, both backend things and CSS to work with the v13 new UI
 - added actor type 'npc', useful for modules(like Campaign Codex) that need it. Handle these as any other actor

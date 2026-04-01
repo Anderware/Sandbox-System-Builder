@@ -2368,7 +2368,10 @@ export class gActor extends Actor {
                             let propKey = propdata.system.attKey;
                             let propauto = propdata.system.auto;
 
-                            if (propauto != "") {                                
+                            if (propauto != "") {   
+                                
+                                let propdata_org=propdata;  
+                                let propauto_org=propauto;
                                 propauto = await propauto.replace(/\@{name}/g, this.name);
                                 propauto = await propauto.replace(/\#{name}/g, citemIDs[n].name);
                                 propauto = await propauto.replace(/\#{active}/g, citemIDs[n].isactive);
@@ -2385,13 +2388,25 @@ export class gActor extends Actor {
 
                                 if (isNaN(rawvalue) && propdata.system.datatype != "simpletext") {
                                     //console.log(rawvalue);
-                                    let afinal = new Roll(rawvalue);
-                                    if (!afinal.isDeterministic) {
+                                    let afinal=0;
+                                    try{
+                                      afinal = new Roll(rawvalue);
+                                      if (!afinal.isDeterministic) {
                                         // dont evaluate if not needed
                                         await afinal.evaluate();
                                         if (!isNaN(afinal.total))
                                             rawvalue = afinal.total;
+                                      }
+                                      
                                     }
+                                    catch(err){
+                                      console.error('checkPropAuto  | '+ propdata.name);
+                                      console.error('checkPropAuto  | '+ propauto_org);
+                                      console.error('checkPropAuto  | '+ rawvalue);
+                                      console.error('checkPropAuto  | '+ err.message);
+                                    }
+                                    
+                                    
 
                                 }
                                 

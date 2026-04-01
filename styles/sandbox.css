@@ -93,6 +93,14 @@
   --sb-input-width-large:150px;
 }
 
+/*Custom CSS FIX for action buttons*/
+.ccss-editor .stylesheet-editor, .ccss-editor code-mirror, .ccss-editor textarea {
+  height: 400px; /* or your preferred fixed height */
+  max-height: 600px; 
+  overflow-y: auto !important; 
+  resize: none !important; 
+}
+
 /* -------------------- */
 /* SCROLLBARS fix until foundry updates it styling*/
 /* -------------------- */
